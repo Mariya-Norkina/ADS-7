@@ -4,24 +4,18 @@
 Train::Train() : countOp(0), first(nullptr) {}
 
 void Train::addCar(bool light) {
-if (first == nullptr) {
-first = new Car{ light, nullptr, nullptr };
-return;
+Car* newCar = new Car{ light, nullptr, nullptr };
+if (!first) {
+first = newCar;
+first->next = first;
+first->prev = first;
+} else {
+Car* last = first->prev;
+last->next = newCar;
+newCar->prev = last;
+newCar->next = first;
+first->prev = newCar;
 }
-if (first->next == nullptr) {
-Car* object = new Car{ light, nullptr, nullptr };
-first->next = object;
-first->prev = object;
-object->prev = first;
-object->next = first;
-return;
-}
-Car* object = new Car{ light, nullptr, nullptr };
-first->prev->next = object;
-object->prev = first->prev;
-first->prev = object;
-object->next = first;
-first = object;
 }
 
 int Train::getLength() {

@@ -22,6 +22,7 @@ object->prev = first->prev;
 first->prev = object;
 object->next = first;
 first = object;
+countOp++;
 }
 
 int Train::getLength() {

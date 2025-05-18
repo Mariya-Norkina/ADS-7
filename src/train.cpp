@@ -29,13 +29,12 @@ if (first == nullptr) {
 return 0;
 }
 int length = 0;
-Car* current = first;
+const Car* current = first;
 do {
 length++;
 current = current->next;
 } while (current != first);
 return length;
-return currentLength;
 }
 
 int Train::getOpCount() {

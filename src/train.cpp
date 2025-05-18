@@ -49,6 +49,6 @@ do {
 next = crnt->next;
 delete crnt;
 crnt = next;
-} while (current != first);
+} while (crnt != first);
 }
 }

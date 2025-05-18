@@ -22,7 +22,6 @@ object->prev = first->prev;
 first->prev = object;
 object->next = first;
 first = object;
-countOp++;
 }
 
 int Train::getLength() {
@@ -43,18 +42,13 @@ return countOp;
 }
 
 Train::~Train() {
-if (first == nullptr) {
-return;
-}
+if (first) {
 Car* crnt = first;
-Car* nextCar = nullptr;
-Car* last = first->prev;
-last->next = nullptr;
-while (crnt != nullptr) {
-nextCar = crnt->next;
+Car* next;
+do {
+next = crnt->next;
 delete crnt;
-crnt = nextCar;
+crnt = next;
+} while (current != first);
 }
-first = nullptr;
-countOp = 0;
 }

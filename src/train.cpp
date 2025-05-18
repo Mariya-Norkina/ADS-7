@@ -19,16 +19,26 @@ first->prev = newCar;
 }
 
 int Train::getLength() {
-if (first == nullptr) {
-return 0;
+Car* crnt;
+countOp = 0;
+while (true) {
+crnt = first;
+int lenght = 1;
+if (!crnt->light) {
+crnt->light = true;
 }
-int length = 0;
-const Car* crnt = first;
-do {
-length++;
 crnt = crnt->next;
-} while (crnt != first);
-return length;
+countOp += 2;
+while (!crnt->light) {
+crnt = crnt->next;
+countOp += 2;
+lenght++;
+}
+crnt->light = false;
+if (!first->light) {
+return lenght;
+}
+}
 }
 
 int Train::getOpCount() {

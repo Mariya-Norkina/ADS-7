@@ -28,7 +28,7 @@ int Train::getLength() {
 if (first == nullptr) {
 return 0;
 }
-size_t length = 0;
+int length = 0;
 Car* current = first;
 do {
 length++;

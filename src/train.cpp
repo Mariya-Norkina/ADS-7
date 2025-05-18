@@ -1,7 +1,7 @@
 // Copyright 2021 NNTU-CS
 #include "train.h"
 
-Train::Train() : countOp(0), first(nullptr), currentLength(0) {}
+Train::Train() : countOp(0), first(nullptr) {}
 
 void Train::addCar(bool light) {
 if (first == nullptr) {
@@ -29,11 +29,11 @@ if (first == nullptr) {
 return 0;
 }
 int length = 0;
-const Car* current = first;
+const Car* crnt = first;
 do {
 length++;
-current = current->next;
-} while (current != first);
+crnt = crnt->next;
+} while (crnt != first);
 return length;
 }
 
@@ -45,16 +45,15 @@ Train::~Train() {
 if (first == nullptr) {
 return;
 }
-Car* current = first;
+Car* crnt = first;
 Car* nextCar = nullptr;
 Car* last = first->prev;
 last->next = nullptr;
-while (current != nullptr) {
-nextCar = current->next;
-delete current;
-current = nextCar;
+while (crnt != nullptr) {
+nextCar = crnt->next;
+delete crnt;
+crnt = nextCar;
 }
 first = nullptr;
-currentLength = 0;
 countOp = 0;
 }
